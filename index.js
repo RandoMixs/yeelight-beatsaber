@@ -120,12 +120,15 @@ ws.on("destroyed",function(){
 // Yeelight
 const Yeelight = require('yeelight2');
 
-var i = 0;
-console.log('\x1b[33m', '[Yeelight]', '\x1b[37m', 'Procurando as lampadas...');
-Yeelight.discover(function(light){
-    if(light.name == "BeatLight") {
-        i++;
-        console.log('\x1b[33m', '[Yeelight]', '\x1b[37m', i + ' lampada encontrada (' + light.name + ')');    
-        light.set_music(1, '172.17.0.100', 8271)
-    }
+require('dns').lookup(require('os').hostname(), function (err, add, fam) {
+	var i = 0;
+	console.log('\x1b[33m', '[Yeelight]', '\x1b[37m', 'As lampadas irão se conectar ao seu computador atravês do IP ' + add);
+	console.log('\x1b[33m', '[Yeelight]', '\x1b[37m', 'Procurando as lampadas...');
+	Yeelight.discover(function(light){
+		if(light.name == "BeatLight") {
+			i++;
+			console.log('\x1b[33m', '[Yeelight]', '\x1b[37m', i + ' lampada encontrada (' + light.name + ')');    
+			light.set_music(1, add, 8271)
+		}
+	});
 });
