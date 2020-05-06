@@ -4,10 +4,17 @@ Sync your Yeelight Lamps with Beat Saber using  Node.JS
 
 ## Installation
 
-You can start the node like any other script
+First you need to install the libraries
+```node
+npm i
+```
+
+And now you can start the script like any other script on Node.JS
 ```node
 node index.js
 ```
+
+* I recommend changing the name of the lamps that will be used to "BeatLight" to not synchronize all the lamps in the house xD
 
 ## Tips
 
